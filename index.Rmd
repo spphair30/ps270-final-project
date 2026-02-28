@@ -18,7 +18,6 @@ I will examine the following research question: Among Wisconsin counties, does e
   
 
 ```{r}
-install.packages("readxl")
 library(readxl)
 ```
 
@@ -27,21 +26,7 @@ library(readxl)
 library(dplyr)
 library(janitor)
 
-gov_results <- read_excel("data/wi_2022_results_gov.xlsx", 
-                 sheet = "County by County Report", 
-                 skip = 7)
-
-gov_results <- df %>%
-  clean_names() %>%
-  rename(
-    county = 1,
-    total_votes = 2,
-    evers_dem = 3,
-    michels_rep = 4,
-    beglinger_ind = 5
-  ) %>%
-  filter(!is.na(county), county != "Totals")
-
+gov_results <- read_excel("data/wi_2022_results_gov.xlsx")
 
 head(gov_results)
 ```
