@@ -14,8 +14,20 @@ I am interested in exploring data related to voting behavior and election analys
 
 ## Research Question & Data
 
-I will examine the following research question: Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2022 Wisconsin gubernatorial election? I will use county-level data from the Wisconsin Elections Commission combined with demographic and socioeconomic data from the U.S. Census via the NIH HDPulse Data Portal. I hypothesize that counties with higher educational attainment will show higher Democratic vote share in the 2022 Wisconsin gubernatorial election. The theoretical logic to support this claim is that higher levels of education are associated with greater exposure to liberal attitudes, which tend to align more closely with the Democratic Party’s platform. The independent variable is educational attainment, measured by the proportion of adults aged 25 and older with a bachelor's degree or higher in each Wisconsin county. The dependent variable is Democratic vote share, measured as a proportion of total votes cast for the Democratic gubernatorial candidate Tony Evers out of all votes cast in each Wisconsin county in the 2022 election. The variables to control for include median household income and population density. These factors would all be analyzed at county level to account for confounding bias among different counties. Support for my hypothesis would be demonstrated through a positive correlation between educational attainment and Democratic vote share at the county level, and my hypothesis would be disproved if the relationship between these variables is negative after controlling for potential confounders.
+I will examine the following research question: Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election? I will use county-level data from the Wisconsin Elections Commission combined with demographic and socioeconomic data from the U.S. Census via the NIH HDPulse Data Portal. I hypothesize that counties with higher educational attainment will show higher Democratic vote share in the 2024 Presidential election. The theoretical logic to support this claim is that higher levels of education are associated with greater exposure to liberal attitudes, which tend to align more closely with the Democratic Party’s platform. The independent variable is educational attainment, measured by the proportion of adults aged 25 and older with a bachelor's degree or higher in each Wisconsin county. The dependent variable is Democratic vote share, measured as a proportion of total votes cast for the Democratic gubernatorial candidate Tony Evers out of all votes cast in each Wisconsin county in the 2022 election. The variables to control for include median household income and population density. These factors would all be analyzed at county level to account for confounding bias among different counties. Support for my hypothesis would be demonstrated through a positive correlation between educational attainment and Democratic vote share at the county level, and my hypothesis would be disproved if the relationship between these variables is negative after controlling for potential confounders.
   
+
+```{r}
+install.packages("readxl")
+library(readxl)
+```
+
+```{r}
+data <- read_excel("data/2024_pres_by_county.xlsx", sheet = "Sheet2", skip = 6)
+head(data)
+```
+
+
 
 ```{r}
 library(readxl)
