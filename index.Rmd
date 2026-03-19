@@ -19,7 +19,6 @@ I will examine the following research question: Among Wisconsin counties, does e
 ## Data
 
 ```{r}
-install.packages("readxl")
 library(readxl)
 ```
 
@@ -38,22 +37,25 @@ education
 ```
 
 ```{r}
-election$County <- as.character(election$County)
-education$County <- as.character(education$County)
+library(dplyr)
 
-elec_edu <- left_join(election, education, by = "County")
+election$county <- as.character(election$...1)
+education$county <- as.character(education$county)
+
+elec_edu <- left_join(election, education, by = "county")
 ```
+
 
 ```{r}
 library(dplyr)
 library(stringr)
 
 election_clean <- election %>%
-  rename(county_name = County) %>%
+  rename(county_name = county) %>%
   mutate(county_name = str_to_lower(trimws(county_name)))
 
 education_clean <- education %>%
-  rename(county_name = County) %>%
+  rename(county_name = county) %>%
   mutate(county_name = str_to_lower(trimws(county_name))) %>%
   mutate(county_name = str_remove(county_name, " county$"))
 
@@ -66,8 +68,8 @@ head(elec_edu)
 
 ```{r}
 elec_edu <- elec_edu |> 
-  rename(`County` = `county_name`,
-         `Total Votes Cast` = `Total Votes Cast`,
+  rename(`county` = `...1`,
+         `Total Votes Cast` = `...3`,
          `Kamala Harris` = `Kamala D. Harris \r\n Tim Walz`,
          `Donald Trump` = `Donald J. Trump \r\n JD Vance`,
          `Rank` = `rank_within_us_of_3143_counties`,
@@ -78,18 +80,14 @@ elec_edu <- elec_edu |>
 
 ```{r}
 elec_edu <- elec_edu |>
-  select(-`Randall Terry \r\n Stephen Broden`, -`Chase Russell Oliver \r\n Mike ter Maat`, -`Jill Stein \r\n Rudolph Ware`, -`Claudia De la Cruz \r\n Karina Garcia`, -`Cornel West \r\n Melina Abdullah`, -`Robert F. Kennedy, Jr. \r\n Nicole Shanahan`, -`...12`, -`...13`, -`Peter Sonski \r\n Lauren Onak (write-in)`, -`Cherunda Lynn Fox (write-in)`, -`Brian Kienitz (write-in)`, -`Doug Jenkins \r\n Kimberly LaLonde (write-in)`, -`Future Madam Potus \r\n Jessica Kennedy (write-in)`, -`André Ramone McNeil, Sr. (write-in)`)
+  select(-`Randall Terry \r\n Stephen Broden`, -`Chase Russell Oliver \r\n Mike ter Maat`, -`Jill Stein \r\n Rudolph Ware`, -`Claudia De la Cruz \r\n Karina Garcia`, -`Cornel West \r\n Melina Abdullah`, -`Robert F. Kennedy, Jr. \r\n Nicole Shanahan`, -`...12`, -`...13`, -`Peter Sonski \r\n Lauren Onak (write-in)`, -`Cherunda Lynn Fox (write-in)`, -`Brian Kienitz (write-in)`, -`Doug Jenkins \r\n Kimberly LaLonde (write-in)`, -`Future Madam Potus \r\n Jessica Kennedy (write-in)`, -`André Ramone McNeil, Sr. (write-in)`, -`...2`, -`SCATTERING`)
 ```
 
 ```{r}
 elec_edu <- elec_edu |>
-  select(-`...2`)
+  select(-`county_name`)
 ```
 
-```{r}
-elec_edu <- elec_edu |>
-  select(-`SCATTERING`)
-```
 
 ```{r}
 elec_edu <- elec_edu |>
@@ -101,9 +99,11 @@ elec_edu <- elec_edu |>
  elec_edu   
 ```
 
+## Visualization
+
 ```{r}
 library(ggplot2)
-library(dbplyr)
+library(dplyr)
 library(scales)
 
 elec_edu_plot <- ggplot(elec_edu, aes(
@@ -111,7 +111,7 @@ elec_edu_plot <- ggplot(elec_edu, aes(
   y = harris_pct)) +
   geom_point(aes(
     size = `Total Votes Cast`), 
-    color = "dodgerblue", alpha = 0.6) +
+    color = "dodgerblue1", alpha = 0.6) +
   geom_smooth(method = "lm", color = "firebrick", linetype = "dashed", se = FALSE) +
  scale_size_continuous(
    name = "Total Votes",
