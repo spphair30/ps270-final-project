@@ -111,7 +111,7 @@ elec_edu_plot <- ggplot(elec_edu, aes(
   y = harris_pct)) +
   geom_point(aes(
     size = `Total Votes Cast`), 
-    color = "dodgerblue", alpha = 0.6) +
+    color = "dodgerblue1", alpha = 0.6) +
   geom_smooth(method = "lm", color = "firebrick", linetype = "dashed", se = FALSE) +
  scale_size_continuous(
    name = "Total Votes",
