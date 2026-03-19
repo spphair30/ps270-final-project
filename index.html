@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Data/HDPulse_data_export.csv","Data/wi_2022_results_gov.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Data/2024_pres_by_county.xlsx","Data/2024_pres_by_county.xlsx.zip","Data/County by County Report_Federal and State Contests_Unofficial Results (1) 2.xlsx","Data/HDPulse_data_export.csv","Data/wi_2022_results_gov.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1546,8 +1546,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-article">
 <h2 id="project-thoughts">Project thoughts</h2>
 <p>I am interested in exploring data related to voting behavior and election analysis. Specifically, I’d like to look at voter turnout and how it is influenced by a certain factor, such as demographics, voting laws, geography, access, etc. I would do this by observing trends over multiple elections based on the factor(s) that I choose.</p>
-<h2 id="research-question-and-data">Research Question and Data</h2>
-<p>I will examine the following research question: Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2022 Wisconsin gubernatorial election? I will use county-level data from the Wisconsin Elections Commission combined with demographic and socioeconomic data from the U.S. Census via the NIH HDPulse Data Portal. I hypothesize that counties with higher educational attainment will show higher Democratic vote share in the 2022 Wisconsin gubernatorial election. The theoretical logic to support this claim is that higher levels of education are associated with greater exposure to liberal attitudes, which tend to align more closely with the Democratic Party’s platform. The independent variable is educational attainment, measured by the proportion of adults aged 25 and older with a bachelor’s degree or higher in each Wisconsin county. The dependent variable is Democratic vote share, measured as a proportion of total votes cast for the Democratic gubernatorial candidate Tony Evers out of all votes cast in each Wisconsin county in the 2022 election. The variables to control for include median household income and population density. These factors would all be analyzed at county level to account for confounding bias among different counties. Support for my hypothesis would be demonstrated through a positive correlation between educational attainment and Democratic vote share at the county level, and my hypothesis would be disproved if the relationship between these variables is negative after controlling for potential confounders.</p>
+<h2 id="research-question-data">Research Question &amp; Data</h2>
+<p>I will examine the following research question: Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election? I will use county-level data from the Wisconsin Elections Commission combined with demographic and socioeconomic data from the U.S. Census via the NIH HDPulse Data Portal. I hypothesize that counties with higher educational attainment will show higher Democratic vote share in the 2024 Presidential election. The theoretical logic to support this claim is that higher levels of education are associated with greater exposure to liberal attitudes, which tend to align more closely with the Democratic Party’s platform. The independent variable is educational attainment, measured by the proportion of adults aged 25 and older with a bachelor’s degree or higher in each Wisconsin county. The dependent variable is Democratic vote share, measured as a proportion of total votes cast for the Democratic Presidential candidate, Kamala Harris, out of all votes cast in each Wisconsin county in the 2024 election. The variables to control for include median household income and population density. These factors would all be analyzed at county level to account for confounding bias among different counties. Support for my hypothesis would be demonstrated through a positive correlation between educational attainment and Democratic vote share at the county level, and my hypothesis would be disproved if the relationship between these variables is negative after controlling for potential confounders.</p>
+<h2 id="data">Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span></span></code></pre>
@@ -1555,44 +1556,184 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span></span>
-<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
-<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/sfirke/janitor'>janitor</a></span><span class='op'>)</span></span>
-<span></span>
-<span><span class='va'>gov_results</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='st'>"data/wi_2022_results_gov.xlsx"</span><span class='op'>)</span></span>
-<span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>gov_results</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>election</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='st'>"data/2024_pres_by_county.xlsx"</span>, sheet <span class='op'>=</span> <span class='st'>"Sheet2"</span>, skip <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>election</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code># A tibble: 1 × 2
-  `County by County Report` ...2                          
-  &lt;lgl&gt;                     &lt;chr&gt;                         
-1 NA                        GOVERNOR / LIEUTENANT GOVERNOR</code></pre>
+<pre><code># A tibble: 6 × 20
+  ...1     ...2    ...3 Kamala D. Harris \r\n…¹ Donald J. Trump \r\n…²
+  &lt;chr&gt;    &lt;lgl&gt;  &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
+1 ADAMS    NA     12882                    4443                   7763
+2 ASHLAND  NA      8955                    4612                   4191
+3 BARRON   NA     26809                    8941                  16726
+4 BAYFIELD NA     11240                    6107                   4860
+5 BROWN    NA    149333                   67937                  79132
+6 BUFFALO  NA      8100                    2765                   5213
+# ℹ abbreviated names: ¹​`Kamala D. Harris \r\n Tim Walz`,
+#   ²​`Donald J. Trump \r\n JD Vance`
+# ℹ 15 more variables: `Randall Terry \r\n Stephen Broden` &lt;dbl&gt;,
+#   `Chase Russell Oliver \r\n Mike ter Maat` &lt;dbl&gt;,
+#   `Jill Stein \r\n Rudolph Ware` &lt;dbl&gt;,
+#   `Claudia De la Cruz \r\n Karina Garcia` &lt;dbl&gt;,
+#   `Cornel West \r\n Melina Abdullah` &lt;dbl&gt;, …</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span></span>
-<span><span class='va'>education</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/HDPulse_data_export.csv"</span>, skip <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/sfirke/janitor'>janitor</a></span><span class='op'>)</span></span>
+<span><span class='va'>education</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/HDPulse_data_export.csv"</span>, skip <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://sfirke.github.io/janitor/reference/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span></span>
 <span><span class='va'>education</span></span></code></pre>
 </div>
 <pre><code># A tibble: 80 × 5
-   County           FIPS  `Value (Percent)` People (Education: At Le…¹
-   &lt;chr&gt;            &lt;chr&gt;             &lt;dbl&gt;                      &lt;dbl&gt;
- 1 Wisconsin        55000              32.8                    1333128
- 2 United States    00000              35                     79954302
- 3 Clark County     55019              13.4                       2891
- 4 Marquette County 55077              15.2                       1793
- 5 Forest County    55041              15.5                       1063
- 6 Langlade County  55067              16.2                       2329
- 7 Jackson County   55053              16.3                       2437
- 8 Juneau County    55057              16.3                       3219
- 9 Rusk County      55107              16.3                       1697
-10 Taylor County    55119              16.7                       2327
+   county           fips  value_percent people_education_at_least_ba…¹
+   &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt;                          &lt;dbl&gt;
+ 1 Wisconsin        55000          32.8                        1333128
+ 2 United States    00000          35                         79954302
+ 3 Clark County     55019          13.4                           2891
+ 4 Marquette County 55077          15.2                           1793
+ 5 Forest County    55041          15.5                           1063
+ 6 Langlade County  55067          16.2                           2329
+ 7 Jackson County   55053          16.3                           2437
+ 8 Juneau County    55057          16.3                           3219
+ 9 Rusk County      55107          16.3                           1697
+10 Taylor County    55119          16.7                           2327
 # ℹ 70 more rows
-# ℹ abbreviated name:
-#   ¹​`People (Education: At Least Bachelor&#39;s Degree)`
-# ℹ 1 more variable: `Rank within US (of 3143 counties)` &lt;chr&gt;</code></pre>
+# ℹ abbreviated name: ¹​people_education_at_least_bachelors_degree
+# ℹ 1 more variable: rank_within_us_of_3143_counties &lt;chr&gt;</code></pre>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>election</span><span class='op'>$</span><span class='va'>county</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>election</span><span class='op'>$</span><span class='va'>...1</span><span class='op'>)</span></span>
+<span><span class='va'>education</span><span class='op'>$</span><span class='va'>county</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>education</span><span class='op'>$</span><span class='va'>county</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>elec_edu</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>election</span>, <span class='va'>education</span>, by <span class='op'>=</span> <span class='st'>"county"</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>election_clean</span> <span class='op'>&lt;-</span> <span class='va'>election</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>county_name <span class='op'>=</span> <span class='va'>county</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>county_name <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/case.html'>str_to_lower</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/trimws.html'>trimws</a></span><span class='op'>(</span><span class='va'>county_name</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>education_clean</span> <span class='op'>&lt;-</span> <span class='va'>education</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>county_name <span class='op'>=</span> <span class='va'>county</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>county_name <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/case.html'>str_to_lower</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/trimws.html'>trimws</a></span><span class='op'>(</span><span class='va'>county_name</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>county_name <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove</a></span><span class='op'>(</span><span class='va'>county_name</span>, <span class='st'>" county$"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>elec_edu</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>inner_join</a></span><span class='op'>(</span><span class='va'>election_clean</span>, <span class='va'>education_clean</span>, by <span class='op'>=</span> <span class='st'>"county_name"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"Number of rows successfully matched:"</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>elec_edu</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;Number of rows successfully matched: 72&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>elec_edu</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code># A tibble: 6 × 25
+  ...1     ...2    ...3 Kamala D. Harris \r\n…¹ Donald J. Trump \r\n…²
+  &lt;chr&gt;    &lt;lgl&gt;  &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
+1 ADAMS    NA     12882                    4443                   7763
+2 ASHLAND  NA      8955                    4612                   4191
+3 BARRON   NA     26809                    8941                  16726
+4 BAYFIELD NA     11240                    6107                   4860
+5 BROWN    NA    149333                   67937                  79132
+6 BUFFALO  NA      8100                    2765                   5213
+# ℹ abbreviated names: ¹​`Kamala D. Harris \r\n Tim Walz`,
+#   ²​`Donald J. Trump \r\n JD Vance`
+# ℹ 20 more variables: `Randall Terry \r\n Stephen Broden` &lt;dbl&gt;,
+#   `Chase Russell Oliver \r\n Mike ter Maat` &lt;dbl&gt;,
+#   `Jill Stein \r\n Rudolph Ware` &lt;dbl&gt;,
+#   `Claudia De la Cruz \r\n Karina Garcia` &lt;dbl&gt;,
+#   `Cornel West \r\n Melina Abdullah` &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>elec_edu</span> <span class='op'>&lt;-</span> <span class='va'>elec_edu</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>`county` <span class='op'>=</span> <span class='va'>`...1`</span>,</span>
+<span>         `Total Votes Cast` <span class='op'>=</span> <span class='va'>`...3`</span>,</span>
+<span>         `Kamala Harris` <span class='op'>=</span> <span class='va'>`Kamala D. Harris \r\n Tim Walz`</span>,</span>
+<span>         `Donald Trump` <span class='op'>=</span> <span class='va'>`Donald J. Trump \r\n JD Vance`</span>,</span>
+<span>         `Rank` <span class='op'>=</span> <span class='va'>`rank_within_us_of_3143_counties`</span>,</span>
+<span>         `Education` <span class='op'>=</span> <span class='va'>`people_education_at_least_bachelors_degree`</span>,</span>
+<span>         `Education %` <span class='op'>=</span> <span class='va'>`value_percent`</span></span>
+<span>         <span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>elec_edu</span> <span class='op'>&lt;-</span> <span class='va'>elec_edu</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>`Randall Terry \r\n Stephen Broden`</span>, <span class='op'>-</span><span class='va'>`Chase Russell Oliver \r\n Mike ter Maat`</span>, <span class='op'>-</span><span class='va'>`Jill Stein \r\n Rudolph Ware`</span>, <span class='op'>-</span><span class='va'>`Claudia De la Cruz \r\n Karina Garcia`</span>, <span class='op'>-</span><span class='va'>`Cornel West \r\n Melina Abdullah`</span>, <span class='op'>-</span><span class='va'>`Robert F. Kennedy, Jr. \r\n Nicole Shanahan`</span>, <span class='op'>-</span><span class='va'>`...12`</span>, <span class='op'>-</span><span class='va'>`...13`</span>, <span class='op'>-</span><span class='va'>`Peter Sonski \r\n Lauren Onak (write-in)`</span>, <span class='op'>-</span><span class='va'>`Cherunda Lynn Fox (write-in)`</span>, <span class='op'>-</span><span class='va'>`Brian Kienitz (write-in)`</span>, <span class='op'>-</span><span class='va'>`Doug Jenkins \r\n Kimberly LaLonde (write-in)`</span>, <span class='op'>-</span><span class='va'>`Future Madam Potus \r\n Jessica Kennedy (write-in)`</span>, <span class='op'>-</span><span class='va'>`André Ramone McNeil, Sr. (write-in)`</span>, <span class='op'>-</span><span class='va'>`...2`</span>, <span class='op'>-</span><span class='va'>`SCATTERING`</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>elec_edu</span> <span class='op'>&lt;-</span> <span class='va'>elec_edu</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>`county_name`</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>elec_edu</span> <span class='op'>&lt;-</span> <span class='va'>elec_edu</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
+<span>    harris_pct <span class='op'>=</span> <span class='op'>(</span><span class='va'>`Kamala Harris`</span> <span class='op'>/</span> <span class='va'>`Total Votes Cast`</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span>,</span>
+<span>    trump_pct <span class='op'>=</span> <span class='op'>(</span><span class='va'>`Donald Trump`</span> <span class='op'>/</span> <span class='va'>`Total Votes Cast`</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span>,</span>
+<span>    dem_two_party_share <span class='op'>=</span> <span class='op'>(</span><span class='va'>`Kamala Harris`</span> <span class='op'>/</span> <span class='op'>(</span><span class='va'>`Kamala Harris`</span> <span class='op'>+</span> <span class='va'>`Donald Trump`</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span></span>
+<span>  <span class='op'>)</span></span>
+<span> <span class='va'>elec_edu</span>   </span></code></pre>
+</div>
+<pre><code># A tibble: 72 × 11
+   county   `Total Votes Cast` `Kamala Harris` `Donald Trump` fips 
+   &lt;chr&gt;                 &lt;dbl&gt;           &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;
+ 1 ADAMS                 12882            4443           7763 55001
+ 2 ASHLAND                8955            4612           4191 55003
+ 3 BARRON                26809            8941          16726 55005
+ 4 BAYFIELD              11240            6107           4860 55007
+ 5 BROWN                149333           67937          79132 55009
+ 6 BUFFALO                8100            2765           5213 55011
+ 7 BURNETT               10810            3665           7008 55013
+ 8 CALUMET               32916           12927          19488 55015
+ 9 CHIPPEWA              38471           14573          23399 55017
+10 CLARK                 15340            4509          10481 55019
+# ℹ 62 more rows
+# ℹ 6 more variables: `Education %` &lt;dbl&gt;, Education &lt;dbl&gt;,
+#   Rank &lt;chr&gt;, harris_pct &lt;dbl&gt;, trump_pct &lt;dbl&gt;,
+#   dem_two_party_share &lt;dbl&gt;</code></pre>
+</div>
+<h2 id="visualization">Visualization</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://scales.r-lib.org'>scales</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>elec_edu_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>elec_edu</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span></span>
+<span>  x <span class='op'>=</span> <span class='va'>`Education %`</span>,</span>
+<span>  y <span class='op'>=</span> <span class='va'>harris_pct</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span></span>
+<span>    size <span class='op'>=</span> <span class='va'>`Total Votes Cast`</span><span class='op'>)</span>, </span>
+<span>    color <span class='op'>=</span> <span class='st'>"dodgerblue1"</span>, alpha <span class='op'>=</span> <span class='fl'>0.6</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, color <span class='op'>=</span> <span class='st'>"firebrick"</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_size.html'>scale_size_continuous</a></span><span class='op'>(</span></span>
+<span>   name <span class='op'>=</span> <span class='st'>"Total Votes"</span>,</span>
+<span>   labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_number.html'>label_number</a></span><span class='op'>(</span>suffix <span class='op'>=</span> <span class='st'>"k"</span>, scale <span class='op'>=</span> <span class='fl'>1e-3</span><span class='op'>)</span> </span>
+<span> <span class='op'>)</span> <span class='op'>+</span></span>
+<span>   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Wisconsin: Education vs. Political Lean (2024)"</span>,</span>
+<span>    subtitle <span class='op'>=</span> <span class='st'>"Correlation between Bachelor's Degree attainment and Democratic Vote share"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"% of WI Population with a Bachelor's Degree or Higher"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"% Vote for Kamala Harris"</span>,</span>
+<span>    caption <span class='op'>=</span> <span class='st'>"Source: Wisconsin Elections Commission and U.S. Census"</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>elec_edu_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-10-1.png" alt="" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
