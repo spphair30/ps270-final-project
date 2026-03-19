@@ -14,8 +14,9 @@ I am interested in exploring data related to voting behavior and election analys
 
 ## Research Question & Data
 
-I will examine the following research question: Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election? I will use county-level data from the Wisconsin Elections Commission combined with demographic and socioeconomic data from the U.S. Census via the NIH HDPulse Data Portal. I hypothesize that counties with higher educational attainment will show higher Democratic vote share in the 2024 Presidential election. The theoretical logic to support this claim is that higher levels of education are associated with greater exposure to liberal attitudes, which tend to align more closely with the Democratic Party’s platform. The independent variable is educational attainment, measured by the proportion of adults aged 25 and older with a bachelor's degree or higher in each Wisconsin county. The dependent variable is Democratic vote share, measured as a proportion of total votes cast for the Democratic gubernatorial candidate Tony Evers out of all votes cast in each Wisconsin county in the 2022 election. The variables to control for include median household income and population density. These factors would all be analyzed at county level to account for confounding bias among different counties. Support for my hypothesis would be demonstrated through a positive correlation between educational attainment and Democratic vote share at the county level, and my hypothesis would be disproved if the relationship between these variables is negative after controlling for potential confounders.
+I will examine the following research question: Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election? I will use county-level data from the Wisconsin Elections Commission combined with demographic and socioeconomic data from the U.S. Census via the NIH HDPulse Data Portal. I hypothesize that counties with higher educational attainment will show higher Democratic vote share in the 2024 Presidential election. The theoretical logic to support this claim is that higher levels of education are associated with greater exposure to liberal attitudes, which tend to align more closely with the Democratic Party’s platform. The independent variable is educational attainment, measured by the proportion of adults aged 25 and older with a bachelor's degree or higher in each Wisconsin county. The dependent variable is Democratic vote share, measured as a proportion of total votes cast for the Democratic Presidential candidate, Kamala Harris, out of all votes cast in each Wisconsin county in the 2024 election. The variables to control for include median household income and population density. These factors would all be analyzed at county level to account for confounding bias among different counties. Support for my hypothesis would be demonstrated through a positive correlation between educational attainment and Democratic vote share at the county level, and my hypothesis would be disproved if the relationship between these variables is negative after controlling for potential confounders.
   
+## Data
 
 ```{r}
 install.packages("readxl")
@@ -23,30 +24,107 @@ library(readxl)
 ```
 
 ```{r}
-data <- read_excel("data/2024_pres_by_county.xlsx", sheet = "Sheet2", skip = 6)
-head(data)
+election <- read_excel("data/2024_pres_by_county.xlsx", sheet = "Sheet2", skip = 6)
+head(election)
 ```
 
-
-
-```{r}
-library(readxl)
-```
-
-```{r}
-library(readxl)
-library(dplyr)
-library(janitor)
-
-gov_results <- read_excel("data/wi_2022_results_gov.xlsx")
-
-head(gov_results)
-```
 
 ```{r}
 library(readr)
-education <- read_csv("Data/HDPulse_data_export.csv", skip = 5)
+library(janitor)
+education <- read_csv("Data/HDPulse_data_export.csv", skip = 4) |>
+  clean_names()
 education
 ```
 
+```{r}
+election$County <- as.character(election$County)
+education$County <- as.character(education$County)
+
+elec_edu <- left_join(election, education, by = "County")
+```
+
+```{r}
+library(dplyr)
+library(stringr)
+
+election_clean <- election %>%
+  rename(county_name = County) %>%
+  mutate(county_name = str_to_lower(trimws(county_name)))
+
+education_clean <- education %>%
+  rename(county_name = County) %>%
+  mutate(county_name = str_to_lower(trimws(county_name))) %>%
+  mutate(county_name = str_remove(county_name, " county$"))
+
+elec_edu <- inner_join(election_clean, education_clean, by = "county_name")
+
+print(paste("Number of rows successfully matched:", nrow(elec_edu)))
+head(elec_edu)
+```
+
+
+```{r}
+elec_edu <- elec_edu |> 
+  rename(`County` = `county_name`,
+         `Total Votes Cast` = `Total Votes Cast`,
+         `Kamala Harris` = `Kamala D. Harris \r\n Tim Walz`,
+         `Donald Trump` = `Donald J. Trump \r\n JD Vance`,
+         `Rank` = `rank_within_us_of_3143_counties`,
+         `Education` = `people_education_at_least_bachelors_degree`,
+         `Education %` = `value_percent`
+         )
+```
+
+```{r}
+elec_edu <- elec_edu |>
+  select(-`Randall Terry \r\n Stephen Broden`, -`Chase Russell Oliver \r\n Mike ter Maat`, -`Jill Stein \r\n Rudolph Ware`, -`Claudia De la Cruz \r\n Karina Garcia`, -`Cornel West \r\n Melina Abdullah`, -`Robert F. Kennedy, Jr. \r\n Nicole Shanahan`, -`...12`, -`...13`, -`Peter Sonski \r\n Lauren Onak (write-in)`, -`Cherunda Lynn Fox (write-in)`, -`Brian Kienitz (write-in)`, -`Doug Jenkins \r\n Kimberly LaLonde (write-in)`, -`Future Madam Potus \r\n Jessica Kennedy (write-in)`, -`André Ramone McNeil, Sr. (write-in)`)
+```
+
+```{r}
+elec_edu <- elec_edu |>
+  select(-`...2`)
+```
+
+```{r}
+elec_edu <- elec_edu |>
+  select(-`SCATTERING`)
+```
+
+```{r}
+elec_edu <- elec_edu |>
+  mutate(
+    harris_pct = (`Kamala Harris` / `Total Votes Cast`) * 100,
+    trump_pct = (`Donald Trump` / `Total Votes Cast`) * 100,
+    dem_two_party_share = (`Kamala Harris` / (`Kamala Harris` + `Donald Trump`)) * 100
+  )
+ elec_edu   
+```
+
+```{r}
+library(ggplot2)
+library(dbplyr)
+library(scales)
+
+elec_edu_plot <- ggplot(elec_edu, aes(
+  x = `Education %`,
+  y = harris_pct)) +
+  geom_point(aes(
+    size = `Total Votes Cast`), 
+    color = "dodgerblue", alpha = 0.6) +
+  geom_smooth(method = "lm", color = "firebrick", linetype = "dashed", se = FALSE) +
+ scale_size_continuous(
+   name = "Total Votes",
+   labels = scales::label_number(suffix = "k", scale = 1e-3) 
+ ) +
+   labs(
+    title = "Wisconsin: Education vs. Political Lean (2024)",
+    subtitle = "Correlation between Bachelor's Degree attainment and Democratic Vote share",
+    x = "% of WI Population with a Bachelor's Degree or Higher",
+    y = "% Vote for Kamala Harris",
+    caption = "Source: Wisconsin Elections Commission and U.S. Census"
+  )
+
+elec_edu_plot
+```
 
