@@ -144,7 +144,7 @@ fit
 
 ```{r}
 regression_results <- data.frame(
-  Term = c("(Interpret", "Bachelor's Degree %"),
+  Term = c("Intercept", "Bachelor's Degree %"),
   Estimate = c(23.8833, 0.6583), 
   Interpretation = c(
     "Predicted vote share with 0% degree attainment",
