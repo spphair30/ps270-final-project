@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Data/2024_pres_by_county.xlsx","Data/2024_pres_by_county.xlsx.zip","Data/County by County Report_Federal and State Contests_Unofficial Results (1) 2.xlsx","Data/HDPulse_data_export.csv","Data/wi_2022_results_gov.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Data/2024_pres_by_county.xlsx","Data/2024_pres_by_county.xlsx.zip","Data/County by County Report_Federal and State Contests_Unofficial Results (1) 2.xlsx","Data/HDPulse_data_export.csv","Data/wi_2022_results_gov.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-11-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1548,7 +1548,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>I am interested in exploring data related to voting behavior and election analysis. Specifically, I’d like to look at voter turnout and how it is influenced by a certain factor, such as demographics, voting laws, geography, access, etc. I would do this by observing trends over multiple elections based on the factor(s) that I choose.</p>
 <h2 id="research-question-data">Research Question &amp; Data</h2>
 <p>I will examine the following research question: Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election? I will use county-level data from the Wisconsin Elections Commission combined with demographic and socioeconomic data from the U.S. Census via the NIH HDPulse Data Portal. I hypothesize that counties with higher educational attainment will show higher Democratic vote share in the 2024 Presidential election. The theoretical logic to support this claim is that higher levels of education are associated with greater exposure to liberal attitudes, which tend to align more closely with the Democratic Party’s platform. The independent variable is educational attainment, measured by the proportion of adults aged 25 and older with a bachelor’s degree or higher in each Wisconsin county. The dependent variable is Democratic vote share, measured as a proportion of total votes cast for the Democratic Presidential candidate, Kamala Harris, out of all votes cast in each Wisconsin county in the 2024 election. The variables to control for include median household income and population density. These factors would all be analyzed at county level to account for confounding bias among different counties. Support for my hypothesis would be demonstrated through a positive correlation between educational attainment and Democratic vote share at the county level, and my hypothesis would be disproved if the relationship between these variables is negative after controlling for potential confounders.</p>
-<h2 id="data">Data</h2>
+<h2 id="data-cleaning">Data Cleaning</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span></span></code></pre>
@@ -1703,6 +1703,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   Rank &lt;chr&gt;, harris_pct &lt;dbl&gt;, trump_pct &lt;dbl&gt;,
 #   dem_two_party_share &lt;dbl&gt;</code></pre>
 </div>
+<h2 id="cleaned-data">Cleaned Data</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>elec_edu</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code># A tibble: 6 × 11
+  county   `Total Votes Cast` `Kamala Harris` `Donald Trump` fips 
+  &lt;chr&gt;                 &lt;dbl&gt;           &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;
+1 ADAMS                 12882            4443           7763 55001
+2 ASHLAND                8955            4612           4191 55003
+3 BARRON                26809            8941          16726 55005
+4 BAYFIELD              11240            6107           4860 55007
+5 BROWN                149333           67937          79132 55009
+6 BUFFALO                8100            2765           5213 55011
+# ℹ 6 more variables: `Education %` &lt;dbl&gt;, Education &lt;dbl&gt;,
+#   Rank &lt;chr&gt;, harris_pct &lt;dbl&gt;, trump_pct &lt;dbl&gt;,
+#   dem_two_party_share &lt;dbl&gt;</code></pre>
+</div>
 <h2 id="visualization">Visualization</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1731,9 +1749,71 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span></span>
 <span><span class='va'>elec_edu_plot</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-10-1.png" alt="" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-11-1.png" alt="" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="regression">Regression</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>harris_pct</span> <span class='op'>~</span> <span class='va'>`Education %`</span>, data <span class='op'>=</span> <span class='va'>elec_edu</span><span class='op'>)</span></span>
+<span><span class='va'>fit</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = harris_pct ~ `Education %`, data = elec_edu)
+
+Coefficients:
+  (Intercept)  `Education %`  
+      23.8833         0.6583  </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>regression_results</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
+<span>  Term <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"(Interpret"</span>, <span class='st'>"Bachelor's Degree %"</span><span class='op'>)</span>,</span>
+<span>  Estimate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>23.8833</span>, <span class='fl'>0.6583</span><span class='op'>)</span>, </span>
+<span>  Interpretation <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span>    <span class='st'>"Predicted vote share with 0% degree attainment"</span>,</span>
+<span>    <span class='st'>"Increase in vote share per 1% increase in degrees"</span></span>
+<span>  <span class='op'>)</span></span>
+<span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>regression_results</span>, </span>
+<span>             digits <span class='op'>=</span> <span class='fl'>2</span>, </span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)"</span>,</span>
+<span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Model Term"</span>, <span class='st'>"Coefficient Estimate"</span>, <span class='st'>"Interpretation"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<caption><span id="tab:unnamed-chunk-14">Table 1: </span>Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)</caption>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 23%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model Term</th>
+<th style="text-align: right;">Coefficient Estimate</th>
+<th style="text-align: left;">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Interpret</td>
+<td style="text-align: right;">23.88</td>
+<td style="text-align: left;">Predicted vote share with 0% degree attainment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bachelor’s Degree %</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: left;">Increase in vote share per 1% increase in degrees</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Based on the linear regression results, there is a statistically significant relationship between Bachelor degree attainment and political preference among Wisconsin counties in the 2024 Presidential Election. The 23.88 intercept suggests that Harris would have a baseline support of 23.88% in a hypothetical county win no Bachelor’s degree attainment. The 0.66 value indicates that fir every 1% increase in the college educated population, votes for Harris increase by an additional 0.66%. The data confirms a clear education gap where higher levels of degree attainment act as a predictor of Democratic success.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
