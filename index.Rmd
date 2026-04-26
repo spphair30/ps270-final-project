@@ -1,5 +1,5 @@
 ---
-title: "How Educational Attainment Effects Democratic Performance: Evidence from the 2024 Presidential Election in Wisconsin"
+title: "How Educational Attainment Affects Democratic Performance: Evidence from the 2024 Presidential Election in Wisconsin"
 author: "Sophia Phair"
 description: "PS270 Final Project"
 output:
@@ -155,7 +155,7 @@ elec_edu_plot
 
 ### Regression Analysis
 
-To further examine the relationship between educational attainment and Democratic vote share, I estimate a cross-sectional linear regression using Wisconsin county-level data from the 2024 presidential election. The estimated slope coefficient of the fit linear regression model indicates how Democratic vote share changes with educational attainment.
+To further examine the relationship between educational attainment and Democratic vote share, a cross-sectional linear regression is estimated using Wisconsin county-level data from the 2024 presidential election. The estimated slope coefficient of the fit linear regression model indicates how Democratic vote share changes with educational attainment.
 
 ```{r, include=FALSE}
 fit <- lm(harris_pct ~ `Education %`, data = elec_edu)
