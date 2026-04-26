@@ -1,34 +1,37 @@
 ---
-title: "PS270 Final Project"
+title: "How Educational Attainment Effects Democratic Performance: Evidence from the 2024 Presidential Election in Wisconsin"
 author: "Sophia Phair"
-description: "My final project"
+description: "PS270 Final Project"
 output:
   distill::distill_article:
     self_contained: false
 ---
 
 
-## Project thoughts
+## Introduction
 
-I am interested in exploring data related to voting behavior and election analysis. Specifically, I'd like to look at voter turnout and how it is influenced by a certain factor, such as demographics, voting laws, geography, access, etc. I would do this by observing trends over multiple elections based on the factor(s) that I choose. 
+Examining the relationship between education level and voting behavior has become a focal point of American politics. This research asks: **Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election?**  Specifically, it looks at whether counties with a higher proportion of adults with a bachelor’s degree or higher are more likely to support the Democratic candidate, Kamala Harris. County-level data from the Wisconsin Elections Commission are combined with demographic data from the US Census via the NIH HDPulse Data Portal to help examine this question. **This study tests the hypothesis that counties with higher educational attainment will exhibit a significantly higher vote share for Kamala Harris.** This hypothesis is grounded in the idea that education shapes political attitudes by exposing individuals to diverse perspectives and civic engagement, which aligns closely with the values held by the Democratic Party. 
 
-## Research Question & Data
+This question is important because it sheds light on broader patterns of political polarization and voting behavior within a key swing state. Wisconsin has played a decisive role in recent presidential elections, so understanding the demographic factors that influence voting outcomes at the country level can explain how elections play out more broadly. Analyzing how education level is associated with partisan preference, accounting for confounders such as income and population density, furthers ongoing debates about political division in the United States. 
 
-I will examine the following research question: Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election? I will use county-level data from the Wisconsin Elections Commission combined with demographic and socioeconomic data from the U.S. Census via the NIH HDPulse Data Portal. I hypothesize that counties with higher educational attainment will show higher Democratic vote share in the 2024 Presidential election. The theoretical logic to support this claim is that higher levels of education are associated with greater exposure to liberal attitudes, which tend to align more closely with the Democratic Party’s platform. The independent variable is educational attainment, measured by the proportion of adults aged 25 and older with a bachelor's degree or higher in each Wisconsin county. The dependent variable is Democratic vote share, measured as a proportion of total votes cast for the Democratic Presidential candidate, Kamala Harris, out of all votes cast in each Wisconsin county in the 2024 election. The variables to control for include median household income and population density. These factors would all be analyzed at county level to account for confounding bias among different counties. Support for my hypothesis would be demonstrated through a positive correlation between educational attainment and Democratic vote share at the county level, and my hypothesis would be disproved if the relationship between these variables is negative after controlling for potential confounders.
-  
-## Data Cleaning
+## Data
 
-```{r}
+The data for this research is merged from two official sources to ensure accuracy. The unit of analysis in this study is the county. The **dependent variable**, Democratic Vote Share in the 2024 Presidential Election, is sourced from the Wisconsin Elections Commission (WEC) county-level voter turnout. The **independent variable**, educational attainment, is retrieved from the U.S. Census Bureau’s American Community Survey, which is a 5-year estimate via the NIH HDPulse Data Portal. The portal includes a comprehensive dataset of socioeconomic indicators across all 72 Wisconsin counties. Rather than tracking changes over time or using an experimental design, this dataset is **cross-sectional**, as it observes all Wisconsin counties at a single point in time to assess how educational backgrounds influence voting behavior. This is the most effective design for identifying geographic and demographic patterns at the state level. 
+ 
+The dependent variable is measured as a percentage of total votes cast for Kamala Harris in each county, calculated as the number of votes for Harris divided by total votes cast, multiplied by 100. Alternatively, a two-party Democratic vote share variable was constructed, calculated as the proportion of votes for Harris out of the combined votes for Harris and Donald Trump. The independent variable, educational attainment, is measured as the percentage of adults aged 25 and older with a bachelor’s degree or higher in each Wisconsin county. The hypothesis will be supported if there is a positive association between educational attainment and Democratic vote share. The hypothesis will be rejected if the relationship is negative or not meaningfully different from zero. 
+
+
+```{r, include=FALSE}
 library(readxl)
 ```
 
-```{r}
+```{r, include=FALSE}
 election <- read_excel("data/2024_pres_by_county.xlsx", sheet = "Sheet2", skip = 6)
 head(election)
 ```
 
 
-```{r}
+```{r, include=FALSE}
 library(readr)
 library(janitor)
 education <- read_csv("Data/HDPulse_data_export.csv", skip = 4) |>
@@ -36,7 +39,7 @@ education <- read_csv("Data/HDPulse_data_export.csv", skip = 4) |>
 education
 ```
 
-```{r}
+```{r, include=FALSE}
 library(dplyr)
 
 election$county <- as.character(election$...1)
@@ -46,7 +49,7 @@ elec_edu <- left_join(election, education, by = "county")
 ```
 
 
-```{r}
+```{r, include=FALSE}
 library(dplyr)
 library(stringr)
 
@@ -66,7 +69,7 @@ head(elec_edu)
 ```
 
 
-```{r}
+```{r, include=FALSE}
 elec_edu <- elec_edu |> 
   rename(`county` = `...1`,
          `Total Votes Cast` = `...3`,
@@ -78,18 +81,18 @@ elec_edu <- elec_edu |>
          )
 ```
 
-```{r}
+```{r, include=FALSE}
 elec_edu <- elec_edu |>
   select(-`Randall Terry \r\n Stephen Broden`, -`Chase Russell Oliver \r\n Mike ter Maat`, -`Jill Stein \r\n Rudolph Ware`, -`Claudia De la Cruz \r\n Karina Garcia`, -`Cornel West \r\n Melina Abdullah`, -`Robert F. Kennedy, Jr. \r\n Nicole Shanahan`, -`...12`, -`...13`, -`Peter Sonski \r\n Lauren Onak (write-in)`, -`Cherunda Lynn Fox (write-in)`, -`Brian Kienitz (write-in)`, -`Doug Jenkins \r\n Kimberly LaLonde (write-in)`, -`Future Madam Potus \r\n Jessica Kennedy (write-in)`, -`André Ramone McNeil, Sr. (write-in)`, -`...2`, -`SCATTERING`)
 ```
 
-```{r}
+```{r, include=FALSE}
 elec_edu <- elec_edu |>
   select(-`county_name`)
 ```
 
 
-```{r}
+```{r, include=FALSE}
 elec_edu <- elec_edu |>
   mutate(
     harris_pct = (`Kamala Harris` / `Total Votes Cast`) * 100,
@@ -98,17 +101,27 @@ elec_edu <- elec_edu |>
   )
  elec_edu   
 ```
-
-## Cleaned Data
-
-```{r}
-head(elec_edu)
+\vspace{1in}
+```{r, echo=FALSE}
+library(kableExtra)
+elec_edu |>
+  select(county, `Total Votes Cast`, `Kamala Harris`, `Donald Trump`, harris_pct, trump_pct, dem_two_party_share, `Education %`) |>
+  kable(
+    col.names = c("County", "Total Votes", "Harris Votes", "Trump Votes", "Harris (%)", "Trump (%)", "Harris Two-Party Share (%)", "Education (%)"),
+    caption = "Wisconsin County-Level Education and Election Data (2024)",
+    digits = 2,
+    format.args = list(big.mark = ",")
+  ) |>
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed")) |>
+  scroll_box(width = "100%", height = "500px")
+  
 ```
+\vspace{1in}
+The figure below plots Democratic vote share against educational attainment for all 72 Wisconsin counties, with point size representing total votes cast. The fitted regression line shows a positive linear relationship, indicating a **positive correlation** between education and Democratic support. Thus, counties with higher proportions of college-educated residents tend to exhibit higher vote shares for Harris. Additionally, larger counties (bigger points) often appear toward the higher end of both education and Democratic vote share, which is consistent with the idea that urban areas reflect higher educational attainment and liberal voting behavior. This visualization serves as preliminary evidence in support of the hypothesis, though **further analysis is necessary to determine statistical significance.**
 
 
-## Visualization
-
-```{r}
+```{r, echo=FALSE}
 library(ggplot2)
 library(dplyr)
 library(scales)
@@ -129,20 +142,23 @@ elec_edu_plot <- ggplot(elec_edu, aes(
     subtitle = "Correlation between Bachelor's Degree attainment and Democratic Vote share",
     x = "% of WI Population with a Bachelor's Degree or Higher",
     y = "% Vote for Kamala Harris",
-    caption = "Source: Wisconsin Elections Commission and U.S. Census"
+    caption = "Unit of analysis: Wisconsin counties. Source: Wisconsin Elections Commission and U.S. Census"
   )
 
 elec_edu_plot
 ```
 
-## Regression
+## Results
 
-```{r}
+### Regression Analysis
+
+To further examine the relationship between educational attainment and Democratic vote share, I estimate a cross-sectional linear regression using Wisconsin county-level data from the 2024 presidential election. The estimated slope coefficient of the fit linear regression model indicates how Democratic vote share changes with educational attainment.
+
+```{r, include=FALSE}
 fit <- lm(harris_pct ~ `Education %`, data = elec_edu)
-fit
 ```
 
-```{r}
+```{r, include=FALSE}
 regression_results <- data.frame(
   Term = c("Intercept", "Bachelor's Degree %"),
   Estimate = c(23.8833, 0.6583), 
@@ -153,11 +169,94 @@ regression_results <- data.frame(
 )
 ```
 
-```{r}
+```{r, echo=FALSE}
 knitr::kable(regression_results, 
              digits = 2, 
              caption = "Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)",
 col.names = c("Model Term", "Coefficient Estimate", "Interpretation"))
 ```
 
-Based on the linear regression results, there is a statistically significant relationship between Bachelor degree attainment and political preference among Wisconsin counties in the 2024 Presidential Election. The 23.88 intercept suggests that Harris would have a baseline support of 23.88% in a hypothetical county with no Bachelor's degree attainment. The 0.66 value indicates that for every 1% increase in the college educated population, votes for Harris increase by an additional 0.66%. The data confirms a clear education gap where higher levels of degree attainment act as a predictor of Democratic success.
+
+Based on the linear regression results, there is empirical support for the hypothesis that higher educational attainment is a significant predictor of Democratic vote share among Wisconsin counties. The **coefficient estimate of 0.66** for "Bachelor's Degree %" indicates that for every 1% increase in the proportion of adults with a bachelor's degree or higher, the vote share for Kamala Harris is predicted to increase by roughly **0.66 percentage points.** The **23.88 intercept value** suggests that Harris would have a baseline support of 23.88% in a hypothetical county with no Bachelor's degree attainment.
+
+### Statistical Inference
+
+#### Permutation Test and P-value
+
+To determine if the relationship between education and voting behavior is statistically significant, a permutation test was conducted with 1,000 repetitions. The resulting null distribution of the slope represents what the relationship would look like if there was a real connection between education and Democratic vote share. The red vertical line represents the observed slope from the real Wisconsin county-level data.
+
+```{r, echo=FALSE, warning=FALSE}
+library(infer)
+library(knitr)
+
+edu_slope <- elec_edu |>
+  specify(harris_pct ~ `Education %`) |>
+  calculate(stat = "slope")
+
+edu_null <- elec_edu |>
+  specify(harris_pct ~ `Education %`) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "slope")
+
+edu_null |>
+  visualize() +
+  shade_p_value(obs_stat = edu_slope, direction = "both") +
+  labs(
+    title = "Null Distribution of the Slope",
+    subtitle = "Shaded area represents the p-value",
+    x = "Simulated Slope",
+    y = "Count"
+  )
+
+edu_null |>
+  get_p_value(obs_stat = edu_slope, direction = "both") |>
+  rename(`p-value` = p_value) |>
+  kable(caption = "Permutation Test Results", digits = 4)
+```
+
+The observed slope falls completely outside the null distribution and the resulting p-value is 0. Because the p-value is well below the standard threshold of 0.05, **the null hypothesis can be rejected** with a high degree of certainty. This provides strong evidence that the relationship  between educational attainment and Democratic vote share in Wisconsin is not a product of random chance. 
+
+#### Bootstrap Confidence Interval
+
+To assess the precision of the relationship between education and voting behavior, a bootstrap distribution of the slope was generated using 1,000 resamples. The following distribution shows the range of possible slope coefficients one could expect to see. The **95% percent confidence interval** (the blue dashed line) ranges from approximately 0.35 to 0.98. 
+
+```{r, include=FALSE}
+edu_boot <- elec_edu |>
+  specify(harris_pct ~ `Education %`) |>
+  generate(reps = 1000, type = "bootstrap") |>
+  calculate(stat = "slope")
+
+edu_ci_95 <- edu_boot |>
+  get_confidence_interval(level = 0.95, type = "percentile")
+
+edu_ci_95 <- edu_ci_95 |>
+  rename(lower = lower_ci, upper = upper_ci)
+```
+
+```{r, echo=FALSE}
+ggplot(edu_boot, aes(x = stat)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 30) +
+  geom_vline(aes(xintercept = lower), data = edu_ci_95, linetype = "dashed", color = "dodgerblue1") +
+  geom_vline(aes(xintercept = upper), data = edu_ci_95, linetype = "dashed", color = "dodgerblue1") +
+  labs(
+    title = "Bootstrap Distribution of Education Effect",
+    x = "Slope (Education and Democratic Vote Share)",
+    y = "Density"
+  )
+```
+
+The bootstrap distribution of the slope coefficient is centered around approximately 0.66. Because the 95% confidence interval lies entirely above zero, it can be concluded that **the relationship between educational attainment and Democratic vote share is statistically significant.** This suggests that a one-percentage point increase in the share of individuals over 25 with a bachelor's degree is associated with an increase of approximately 0.66 percentage points in vote share for Kamala Harris, as the true effect likely falls within the estimated confidence interval. 
+
+However, because this research utilizes cross-sectional observational data rather than an experimental design, **the relationship should be interpreted as a correlation rather than a causal effect.** This is because counties were not randomly assigned different levels of educational attainment, and other factors, such income and population density, may influence education levels and voting behavior. This makes it difficult to isolate the independent effect of education on Democratic vote share. 
+
+## Conclusion 
+
+\newpage
+
+# Code Printout
+
+```{r print-code, ref.label=knitr::all_labels(), echo = TRUE, eval=FALSE}
+
+```
+
