@@ -102,18 +102,21 @@ elec_edu <- elec_edu |>
  elec_edu   
 ```
 \vspace{1in}
-```{r, echo=FALSE}
+
+#### Wisconsin County-Level Election and Education Data (2024)
+
+```{r, my_table_name, echo=FALSE}
 library(kableExtra)
 elec_edu |>
   select(county, `Total Votes Cast`, `Kamala Harris`, `Donald Trump`, harris_pct, trump_pct, dem_two_party_share, `Education %`) |>
   kable(
     col.names = c("County", "Total Votes", "Harris Votes", "Trump Votes", "Harris (%)", "Trump (%)", "Harris Two-Party Share (%)", "Education (%)"),
-    caption = "Wisconsin County-Level Education and Election Data (2024)",
     digits = 2,
     format.args = list(big.mark = ",")
   ) |>
   kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed")) |>
+    bootstrap_options = c("striped", "hover", "condensed"),
+    font_size = 11) |>
   scroll_box(width = "100%", height = "500px")
   
 ```
@@ -251,6 +254,8 @@ The bootstrap distribution of the slope coefficient is centered around approxima
 However, because this research utilizes cross-sectional observational data rather than an experimental design, **the relationship should be interpreted as a correlation rather than a causal effect.** This is because counties were not randomly assigned different levels of educational attainment, and other factors, such income and population density, may influence education levels and voting behavior. This makes it difficult to isolate the independent effect of education on Democratic vote share. 
 
 ## Conclusion 
+
+**This analysis provides strong empirical support for the hypothesis that educational attainment is a significant predictor of Democratic support in Wisconsin’s 2024 presidential election.** Both the permutation test (p < 0.05) and the bootstrap 95% confidence interval (0.35, 0.98) confirm a positive association. This indicates that as each county’s bachelor’s degree attainment increases, so does the Democratic vote share. However, it is important to note that these results are subject to limitations and threats to interference. First, because this design is cross-sectional, it is vulnerable to omitted variable bias, where factors such as median household income, racial demographics, or population density can confound the relationship between education and voting behavior. Additionally, because this analysis relies on aggregate county-level data, it can be observed that highly educated counties lean Democratic, but it cannot technically be proven that individual degree-holders within those counties were the ones who cast votes for Kamala Harris. To improve this research, future studies should conduct individual-level surveys or exit polls to isolate education as a variable from other socioeconomic factors, thereby avoiding group-level assumptions. This data would also benefit from longitudinal data that observes multiple election cycles to understand how the effect of education on Democratic vote share has evolved over time in Wisconsin. 
 
 \newpage
 
