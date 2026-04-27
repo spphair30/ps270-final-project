@@ -161,26 +161,33 @@ To further examine the relationship between educational attainment and Democrati
 fit <- lm(harris_pct ~ `Education %`, data = elec_edu)
 ```
 
-```{r, include=FALSE}
-regression_results <- data.frame(
-  Term = c("Intercept", "Bachelor's Degree %"),
-  Estimate = c(23.8833, 0.6583), 
-  Interpretation = c(
-    "Predicted vote share with 0% degree attainment",
-    "Increase in vote share per 1% increase in degrees"
-  )
-)
-```
-
 ```{r, echo=FALSE}
-knitr::kable(regression_results, 
-             digits = 2, 
-             caption = "Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)",
-col.names = c("Model Term", "Coefficient Estimate", "Interpretation"))
+library(modelsummary)
+library(gt)
+
+cm <- c('(Intercept)' = 'Intercept', 
+        'Education %' = 'Education Rate (%)')
+
+modelsummary(
+  list("Primary Model" = fit),
+  stars = TRUE,
+  coef_rename = cm,
+  fmt = 2,                             
+  title = "Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)",
+  gof_map = list(
+    list("raw" = "nobs", "clean" = "Observations", "fmt" = 0),
+    list("raw" = "r.squared", "clean" = "R-Squared", "fmt" = 3)
+  ),
+  output = "gt"                        
+) |>
+  tab_options(
+    table.width = pct(100),           
+    column_labels.background.color = "gray95"
+  ) |>
+  cols_align(align = "center", columns = 2) 
 ```
 
-
-Based on the linear regression results, there is empirical support for the hypothesis that higher educational attainment is a significant predictor of Democratic vote share among Wisconsin counties. The **coefficient estimate of 0.66** for "Bachelor's Degree %" indicates that for every 1% increase in the proportion of adults with a bachelor's degree or higher, the vote share for Kamala Harris is predicted to increase by roughly **0.66 percentage points.** The **23.88 intercept value** suggests that Harris would have a baseline support of 23.88% in a hypothetical county with no Bachelor's degree attainment.
+Based on the linear regression results, there is empirical support for the hypothesis that higher educational attainment is a significant predictor of Democratic vote share among Wisconsin counties. The **coefficient estimate of 0.66** for "Education Rate (%)" indicates that for every 1% increase in the proportion of adults with a bachelor's degree or higher, the vote share for Kamala Harris is predicted to increase by roughly **0.66 percentage points.** The **23.88 intercept value** suggests that Harris would have a baseline support of 23.88% in a hypothetical county with no Bachelor's degree attainment.
 
 ### Statistical Inference
 
@@ -258,9 +265,11 @@ However, because this research utilizes cross-sectional observational data rathe
 
 **This analysis provides strong empirical support for the hypothesis that educational attainment is a significant predictor of Democratic support in Wisconsin’s 2024 presidential election.** Both the permutation test (p < 0.05) and the bootstrap 95% confidence interval (0.35, 0.98) confirm a positive association. This indicates that as each county’s bachelor’s degree attainment increases, so does the Democratic vote share. However, it is important to note that these results are subject to limitations and threats to interference. First, because this design is cross-sectional, it is vulnerable to omitted variable bias, where factors such as median household income, racial demographics, or population density can confound the relationship between education and voting behavior. Additionally, because this analysis relies on aggregate county-level data, it can be observed that highly educated counties lean Democratic, but it cannot technically be proven that individual degree-holders within those counties were the ones who cast votes for Kamala Harris. To improve this research, future studies should conduct individual-level surveys or exit polls to isolate education as a variable from other socioeconomic factors, thereby avoiding group-level assumptions. This data would also benefit from longitudinal data that observes multiple election cycles to understand how the effect of education on Democratic vote share has evolved over time in Wisconsin. 
 
-\newpage
+## AI Disclosure Statement 
 
-# Code Printout
+
+
+## Code Printout
 
 ```{r print-code, ref.label=knitr::all_labels(), echo = TRUE, eval=FALSE}
 

@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Data/2024_pres_by_county.xlsx","Data/2024_pres_by_county.xlsx.zip","Data/County by County Report_Federal and State Contests_Unofficial Results (1) 2.xlsx","Data/HDPulse_data_export.csv","Data/wi_2022_results_gov.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/bsTable-3.3.7/bootstrapTable.js","index_files/bsTable-3.3.7/bootstrapTable.min.css","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-11-1.png","index_files/figure-html5/unnamed-chunk-12-1.png","index_files/figure-html5/unnamed-chunk-14-1.png","index_files/figure-html5/unnamed-chunk-15-1.png","index_files/figure-html5/unnamed-chunk-16-1.png","index_files/figure-html5/unnamed-chunk-17-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Data/2024_pres_by_county.xlsx","Data/2024_pres_by_county.xlsx.zip","Data/County by County Report_Federal and State Contests_Unofficial Results (1) 2.xlsx","Data/HDPulse_data_export.csv","Data/wi_2022_results_gov.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/bsTable-3.3.7/bootstrapTable.js","index_files/bsTable-3.3.7/bootstrapTable.min.css","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-11-1.png","index_files/figure-html5/unnamed-chunk-12-1.png","index_files/figure-html5/unnamed-chunk-13-1.png","index_files/figure-html5/unnamed-chunk-14-1.png","index_files/figure-html5/unnamed-chunk-15-1.png","index_files/figure-html5/unnamed-chunk-16-1.png","index_files/figure-html5/unnamed-chunk-17-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -3471,42 +3471,493 @@ WOOD
 <h3 id="regression-analysis">Regression Analysis</h3>
 <p>To further examine the relationship between educational attainment and Democratic vote share, a cross-sectional linear regression is estimated using Wisconsin county-level data from the 2024 presidential election. The estimated slope coefficient of the fit linear regression model indicates how Democratic vote share changes with educational attainment.</p>
 <div class="layout-chunk" data-layout="l-body">
-<table>
-<caption><span id="tab:unnamed-chunk-13">Table 1: </span>Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)</caption>
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 23%" />
-<col style="width: 54%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Model Term</th>
-<th style="text-align: right;">Coefficient Estimate</th>
-<th style="text-align: left;">Interpretation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: right;">23.88</td>
-<td style="text-align: left;">Predicted vote share with 0% degree attainment</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Bachelor’s Degree %</td>
-<td style="text-align: right;">0.66</td>
-<td style="text-align: left;">Increase in vote share per 1% increase in degrees</td>
-</tr>
-</tbody>
+<div id="jamrtpxkid" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jamrtpxkid table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jamrtpxkid thead, #jamrtpxkid tbody, #jamrtpxkid tfoot, #jamrtpxkid tr, #jamrtpxkid td, #jamrtpxkid th {
+  border-style: none;
+}
+
+#jamrtpxkid p {
+  margin: 0;
+  padding: 0;
+}
+
+#jamrtpxkid .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jamrtpxkid .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jamrtpxkid .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jamrtpxkid .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_col_heading {
+  color: #333333;
+  background-color: #F2F2F2;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jamrtpxkid .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #F2F2F2;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jamrtpxkid .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jamrtpxkid .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jamrtpxkid .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jamrtpxkid .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jamrtpxkid .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jamrtpxkid .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jamrtpxkid .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jamrtpxkid .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jamrtpxkid .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jamrtpxkid .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jamrtpxkid .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jamrtpxkid .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jamrtpxkid .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jamrtpxkid .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jamrtpxkid .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jamrtpxkid .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jamrtpxkid .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jamrtpxkid .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jamrtpxkid .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jamrtpxkid .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jamrtpxkid .gt_left {
+  text-align: left;
+}
+
+#jamrtpxkid .gt_center {
+  text-align: center;
+}
+
+#jamrtpxkid .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jamrtpxkid .gt_font_normal {
+  font-weight: normal;
+}
+
+#jamrtpxkid .gt_font_bold {
+  font-weight: bold;
+}
+
+#jamrtpxkid .gt_font_italic {
+  font-style: italic;
+}
+
+#jamrtpxkid .gt_super {
+  font-size: 65%;
+}
+
+#jamrtpxkid .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jamrtpxkid .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jamrtpxkid .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jamrtpxkid .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jamrtpxkid .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jamrtpxkid .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jamrtpxkid .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#jamrtpxkid .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jamrtpxkid div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <caption><span id="tab:unnamed-chunk-12">Table 1: </span>Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)</caption>
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="a-"> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Primary-Model">Primary Model</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers=" " class="gt_row gt_left">Intercept</td>
+<td headers="Primary Model" class="gt_row gt_center">23.88***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left"></td>
+<td headers="Primary Model" class="gt_row gt_center">(3.42)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Education Rate (%)</td>
+<td headers="Primary Model" class="gt_row gt_center">0.66***</td></tr>
+    <tr><td headers=" " class="gt_row gt_left" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000;"></td>
+<td headers="Primary Model" class="gt_row gt_center" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000;">(0.13)</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Observations</td>
+<td headers="Primary Model" class="gt_row gt_center">72</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">R-Squared</td>
+<td headers="Primary Model" class="gt_row gt_center">0.278</td></tr>
+  </tbody>
+  <tfoot>
+    <tr class="gt_sourcenotes">
+      <td class="gt_sourcenote" colspan="2">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+    </tr>
+  </tfoot>
 </table>
 </div>
-<p>Based on the linear regression results, there is empirical support for the hypothesis that higher educational attainment is a significant predictor of Democratic vote share among Wisconsin counties. The <strong>coefficient estimate of 0.66</strong> for “Bachelor’s Degree %” indicates that for every 1% increase in the proportion of adults with a bachelor’s degree or higher, the vote share for Kamala Harris is predicted to increase by roughly <strong>0.66 percentage points.</strong> The <strong>23.88 intercept value</strong> suggests that Harris would have a baseline support of 23.88% in a hypothetical county with no Bachelor’s degree attainment.</p>
+</div>
+<p>Based on the linear regression results, there is empirical support for the hypothesis that higher educational attainment is a significant predictor of Democratic vote share among Wisconsin counties. The <strong>coefficient estimate of 0.66</strong> for “Education Rate (%)” indicates that for every 1% increase in the proportion of adults with a bachelor’s degree or higher, the vote share for Kamala Harris is predicted to increase by roughly <strong>0.66 percentage points.</strong> The <strong>23.88 intercept value</strong> suggests that Harris would have a baseline support of 23.88% in a hypothetical county with no Bachelor’s degree attainment.</p>
 <h3 id="statistical-inference">Statistical Inference</h3>
 <h4 id="permutation-test-and-p-value">Permutation Test and P-value</h4>
 <p>To determine if the relationship between education and voting behavior is statistically significant, a permutation test was conducted with 1,000 repetitions. The resulting null distribution of the slope represents what the relationship would look like if there was a real connection between education and Democratic vote share. The red vertical line represents the observed slope from the real Wisconsin county-level data.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-14-1.png" alt="" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-13-1.png" alt="" width="624" /></p>
 <table>
-<caption><span id="tab:unnamed-chunk-14">Table 2: </span>Permutation Test Results</caption>
+<caption><span id="tab:unnamed-chunk-13">Table 2: </span>Permutation Test Results</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">p-value</th>
@@ -3523,14 +3974,14 @@ WOOD
 <h4 id="bootstrap-confidence-interval">Bootstrap Confidence Interval</h4>
 <p>To assess the precision of the relationship between education and voting behavior, a bootstrap distribution of the slope was generated using 1,000 resamples. The following distribution shows the range of possible slope coefficients one could expect to see. The <strong>95% percent confidence interval</strong> (the blue dashed line) ranges from approximately 0.35 to 0.98.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-16-1.png" alt="" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-15-1.png" alt="" width="624" /></p>
 </div>
 <p>The bootstrap distribution of the slope coefficient is centered around approximately 0.66. Because the 95% confidence interval lies entirely above zero, it can be concluded that <strong>the relationship between educational attainment and Democratic vote share is statistically significant.</strong> This suggests that a one-percentage point increase in the share of individuals over 25 with a bachelor’s degree is associated with an increase of approximately 0.66 percentage points in vote share for Kamala Harris, as the true effect likely falls within the estimated confidence interval.</p>
 <p>However, because this research utilizes cross-sectional observational data rather than an experimental design, <strong>the relationship should be interpreted as a correlation rather than a causal effect.</strong> This is because counties were not randomly assigned different levels of educational attainment, and other factors, such income and population density, may influence education levels and voting behavior. This makes it difficult to isolate the independent effect of education on Democratic vote share.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p><strong>This analysis provides strong empirical support for the hypothesis that educational attainment is a significant predictor of Democratic support in Wisconsin’s 2024 presidential election.</strong> Both the permutation test (p &lt; 0.05) and the bootstrap 95% confidence interval (0.35, 0.98) confirm a positive association. This indicates that as each county’s bachelor’s degree attainment increases, so does the Democratic vote share. However, it is important to note that these results are subject to limitations and threats to interference. First, because this design is cross-sectional, it is vulnerable to omitted variable bias, where factors such as median household income, racial demographics, or population density can confound the relationship between education and voting behavior. Additionally, because this analysis relies on aggregate county-level data, it can be observed that highly educated counties lean Democratic, but it cannot technically be proven that individual degree-holders within those counties were the ones who cast votes for Kamala Harris. To improve this research, future studies should conduct individual-level surveys or exit polls to isolate education as a variable from other socioeconomic factors, thereby avoiding group-level assumptions. This data would also benefit from longitudinal data that observes multiple election cycles to understand how the effect of education on Democratic vote share has evolved over time in Wisconsin.</p>
-<div style="page-break-after: always;"></div>
-<h1 id="code-printout">Code Printout</h1>
+<h2 id="ai-disclosure-statement">AI Disclosure Statement</h2>
+<h2 id="code-printout">Code Printout</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span></span>
@@ -3621,18 +4072,29 @@ WOOD
 <span></span>
 <span><span class='va'>elec_edu_plot</span></span>
 <span><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>harris_pct</span> <span class='op'>~</span> <span class='va'>`Education %`</span>, data <span class='op'>=</span> <span class='va'>elec_edu</span><span class='op'>)</span></span>
-<span><span class='va'>regression_results</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
-<span>  Term <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Intercept"</span>, <span class='st'>"Bachelor's Degree %"</span><span class='op'>)</span>,</span>
-<span>  Estimate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>23.8833</span>, <span class='fl'>0.6583</span><span class='op'>)</span>, </span>
-<span>  Interpretation <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
-<span>    <span class='st'>"Predicted vote share with 0% degree attainment"</span>,</span>
-<span>    <span class='st'>"Increase in vote share per 1% increase in degrees"</span></span>
-<span>  <span class='op'>)</span></span>
-<span><span class='op'>)</span></span>
-<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>regression_results</span>, </span>
-<span>             digits <span class='op'>=</span> <span class='fl'>2</span>, </span>
-<span>             caption <span class='op'>=</span> <span class='st'>"Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)"</span>,</span>
-<span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Model Term"</span>, <span class='st'>"Coefficient Estimate"</span>, <span class='st'>"Interpretation"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://modelsummary.com'>modelsummary</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com'>gt</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>cm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'(Intercept)'</span> <span class='op'>=</span> <span class='st'>'Intercept'</span>, </span>
+<span>        <span class='st'>'Education %'</span> <span class='op'>=</span> <span class='st'>'Education Rate (%)'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://modelsummary.com/man/modelsummary.html'>modelsummary</a></span><span class='op'>(</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"Primary Model"</span> <span class='op'>=</span> <span class='va'>fit</span><span class='op'>)</span>,</span>
+<span>  stars <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span>  coef_rename <span class='op'>=</span> <span class='va'>cm</span>,</span>
+<span>  fmt <span class='op'>=</span> <span class='fl'>2</span>,                             </span>
+<span>  title <span class='op'>=</span> <span class='st'>"Linear Regression: Education vs. Kamala Harris Vote Share (WI, 2024)"</span>,</span>
+<span>  gof_map <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span>    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"raw"</span> <span class='op'>=</span> <span class='st'>"nobs"</span>, <span class='st'>"clean"</span> <span class='op'>=</span> <span class='st'>"Observations"</span>, <span class='st'>"fmt"</span> <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,</span>
+<span>    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"raw"</span> <span class='op'>=</span> <span class='st'>"r.squared"</span>, <span class='st'>"clean"</span> <span class='op'>=</span> <span class='st'>"R-Squared"</span>, <span class='st'>"fmt"</span> <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span>,</span>
+<span>  output <span class='op'>=</span> <span class='st'>"gt"</span>                        </span>
+<span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span></span>
+<span>    table.width <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/pct.html'>pct</a></span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span>,           </span>
+<span>    column_labels.background.color <span class='op'>=</span> <span class='st'>"gray95"</span></span>
+<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://gt.rstudio.com/reference/cols_align.html'>cols_align</a></span><span class='op'>(</span>align <span class='op'>=</span> <span class='st'>"center"</span>, columns <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> </span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/tidymodels/infer'>infer</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://yihui.org/knitr/'>knitr</a></span><span class='op'>)</span></span>
 <span></span>
