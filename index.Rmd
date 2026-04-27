@@ -206,11 +206,11 @@ edu_null |>
   visualize() +
   shade_p_value(obs_stat = edu_slope, direction = "both") +
   labs(
-    title = "Null Distribution of the Slope",
-    subtitle = "Shaded area represents the p-value",
-    x = "Simulated Slope",
-    y = "Count"
-  )
+    title = "Null Distribution: Education vs. Harris Vote Share",
+    subtitle = "Observed slope against 1,000 randomized simulations",
+    x = "Simulated Education Effect (Randomized)",
+    y = "Frequency (Count)"
+  ) 
 
 edu_null |>
   get_p_value(obs_stat = edu_slope, direction = "both") |>
@@ -243,8 +243,9 @@ ggplot(edu_boot, aes(x = stat)) +
   geom_vline(aes(xintercept = lower), data = edu_ci_95, linetype = "dashed", color = "dodgerblue1") +
   geom_vline(aes(xintercept = upper), data = edu_ci_95, linetype = "dashed", color = "dodgerblue1") +
   labs(
-    title = "Bootstrap Distribution of Education Effect",
-    x = "Slope (Education and Democratic Vote Share)",
+    title = "Bootstrap Distribution: Estimating the Education Effect",
+    subtitle = "95% Confidence Interval for the education effect",
+    x = "Predicted Increase in Harris % (per 1% Degree Increase)",
     y = "Density"
   )
 ```
