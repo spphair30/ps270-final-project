@@ -1549,11 +1549,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h2 id="introduction">Introduction</h2>
-<p>Examining the relationship between education level and voting behavior has become a focal point of American politics. This research asks: <strong>Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election?</strong> Specifically, it looks at whether counties with a higher proportion of adults with a bachelor’s degree or higher are more likely to support the Democratic candidate, Kamala Harris. County-level data from the Wisconsin Elections Commission are combined with demographic data from the US Census via the NIH HDPulse Data Portal to help examine this question. <strong>This study tests the hypothesis that counties with higher educational attainment will exhibit a significantly higher vote share for Kamala Harris.</strong> This hypothesis is grounded in the idea that education shapes political attitudes by exposing individuals to diverse perspectives and civic engagement, which aligns closely with the values held by the Democratic Party.</p>
-<p>This question is important because it sheds light on broader patterns of political polarization and voting behavior within a key swing state. Wisconsin has played a decisive role in recent presidential elections, so understanding the demographic factors that influence voting outcomes at the country level can explain how elections play out more broadly. Analyzing how education level is associated with partisan preference, accounting for confounders such as income and population density, furthers ongoing debates about political division in the United States.</p>
+<p>Examining the relationship between education level and voting behavior has become a focal point of American politics. This research asks: <strong>Among Wisconsin counties, does educational attainment predict Democratic vote share in the 2024 Presidential election?</strong> Specifically, it looks at whether counties with a higher proportion of adults with a bachelor’s degree or higher are more likely to support the Democratic candidate, Kamala Harris. Combining county-level data from the Wisconsin Elections Commission with demographic data from the US Census, <strong>this study tests the hypothesis that higher educational attainment is positively associated with a higher vote share for the Democratic candidate.</strong> This hypothesis is grounded in the idea that education shapes political attitudes by exposing individuals to diverse perspectives and values that align closely with the Democratic platform.</p>
+<p>This question is important because it explains the demographic shifts that influence political polarization within a key swing state. Given that Wisconsin consistently plays a decisive role in the Electoral College, understanding county-level education gaps can provide insight into how partisan alignment is currently being restructured. Analyzing how education level is associated with partisan preference serves as a critical step toward accounting for confounders such as income and population density, furthering ongoing debates about political division in the United States.</p>
 <h2 id="data">Data</h2>
 <p>The data for this research is merged from two official sources to ensure accuracy. The unit of analysis in this study is the county. The <strong>dependent variable</strong>, Democratic Vote Share in the 2024 Presidential Election, is sourced from the Wisconsin Elections Commission (WEC) county-level voter turnout. The <strong>independent variable</strong>, educational attainment, is retrieved from the U.S. Census Bureau’s American Community Survey, which is a 5-year estimate via the NIH HDPulse Data Portal. The portal includes a comprehensive dataset of socioeconomic indicators across all 72 Wisconsin counties. Rather than tracking changes over time or using an experimental design, this dataset is <strong>cross-sectional</strong>, as it observes all Wisconsin counties at a single point in time to assess how educational backgrounds influence voting behavior. This is the most effective design for identifying geographic and demographic patterns at the state level.</p>
-<p>The dependent variable is measured as a percentage of total votes cast for Kamala Harris in each county, calculated as the number of votes for Harris divided by total votes cast, multiplied by 100. Alternatively, a two-party Democratic vote share variable was constructed, calculated as the proportion of votes for Harris out of the combined votes for Harris and Donald Trump. The independent variable, educational attainment, is measured as the percentage of adults aged 25 and older with a bachelor’s degree or higher in each Wisconsin county. The hypothesis will be supported if there is a positive association between educational attainment and Democratic vote share. The hypothesis will be rejected if the relationship is negative or not meaningfully different from zero.</p>
+<p>The dependent variable is measured as a percentage of total votes cast for Kamala Harris in each county, calculated as the number of votes for Harris divided by total votes cast, multiplied by 100. Alternatively, a two-party Democratic vote share variable was constructed, calculated as the proportion of votes for Harris out of the combined votes for Harris and Donald Trump. The independent variable, educational attainment, is measured as the percentage of adults aged 25 and older with a bachelor’s degree or higher in each Wisconsin county. The hypothesis will be supported if the regression coefficient for educational attainment is positive and statistically significant at the <span class="math inline">\(\alpha = 0.05\)</span> level (p-value &lt; 0.05). If the p-value is greater than 0.05, or if the coefficient is negative, the hypothesis will be rejected in favor of the null.</p>
 <h4 id="wisconsin-county-level-election-and-education-data-2024">Wisconsin County-Level Election and Education Data (2024)</h4>
 <div class="layout-chunk" data-layout="l-body">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
@@ -3469,25 +3469,25 @@ WOOD
 </div>
 <h2 id="results">Results</h2>
 <h3 id="regression-analysis">Regression Analysis</h3>
-<p>To further examine the relationship between educational attainment and Democratic vote share, a cross-sectional linear regression is estimated using Wisconsin county-level data from the 2024 presidential election. The estimated slope coefficient of the fit linear regression model indicates how Democratic vote share changes with educational attainment.</p>
+<p>To further examine the relationship between educational attainment and Democratic vote share, a cross-sectional linear regression is estimated using Wisconsin county-level data from the 2024 presidential election.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div id="jamrtpxkid" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jamrtpxkid table {
+<div id="mholwiajdv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mholwiajdv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jamrtpxkid thead, #jamrtpxkid tbody, #jamrtpxkid tfoot, #jamrtpxkid tr, #jamrtpxkid td, #jamrtpxkid th {
+#mholwiajdv thead, #mholwiajdv tbody, #mholwiajdv tfoot, #mholwiajdv tr, #mholwiajdv td, #mholwiajdv th {
   border-style: none;
 }
 
-#jamrtpxkid p {
+#mholwiajdv p {
   margin: 0;
   padding: 0;
 }
 
-#jamrtpxkid .gt_table {
+#mholwiajdv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3513,12 +3513,12 @@ WOOD
   border-left-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_caption {
+#mholwiajdv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jamrtpxkid .gt_title {
+#mholwiajdv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3530,7 +3530,7 @@ WOOD
   border-bottom-width: 0;
 }
 
-#jamrtpxkid .gt_subtitle {
+#mholwiajdv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3542,7 +3542,7 @@ WOOD
   border-top-width: 0;
 }
 
-#jamrtpxkid .gt_heading {
+#mholwiajdv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3554,13 +3554,13 @@ WOOD
   border-right-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_bottom_border {
+#mholwiajdv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_col_headings {
+#mholwiajdv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3575,7 +3575,7 @@ WOOD
   border-right-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_col_heading {
+#mholwiajdv .gt_col_heading {
   color: #333333;
   background-color: #F2F2F2;
   font-size: 100%;
@@ -3595,7 +3595,7 @@ WOOD
   overflow-x: hidden;
 }
 
-#jamrtpxkid .gt_column_spanner_outer {
+#mholwiajdv .gt_column_spanner_outer {
   color: #333333;
   background-color: #F2F2F2;
   font-size: 100%;
@@ -3607,15 +3607,15 @@ WOOD
   padding-right: 4px;
 }
 
-#jamrtpxkid .gt_column_spanner_outer:first-child {
+#mholwiajdv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jamrtpxkid .gt_column_spanner_outer:last-child {
+#mholwiajdv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jamrtpxkid .gt_column_spanner {
+#mholwiajdv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3627,11 +3627,11 @@ WOOD
   width: 100%;
 }
 
-#jamrtpxkid .gt_spanner_row {
+#mholwiajdv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jamrtpxkid .gt_group_heading {
+#mholwiajdv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3657,7 +3657,7 @@ WOOD
   text-align: left;
 }
 
-#jamrtpxkid .gt_empty_group_heading {
+#mholwiajdv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3672,15 +3672,15 @@ WOOD
   vertical-align: middle;
 }
 
-#jamrtpxkid .gt_from_md > :first-child {
+#mholwiajdv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jamrtpxkid .gt_from_md > :last-child {
+#mholwiajdv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jamrtpxkid .gt_row {
+#mholwiajdv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3699,7 +3699,7 @@ WOOD
   overflow-x: hidden;
 }
 
-#jamrtpxkid .gt_stub {
+#mholwiajdv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3712,7 +3712,7 @@ WOOD
   padding-right: 5px;
 }
 
-#jamrtpxkid .gt_stub_row_group {
+#mholwiajdv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3726,15 +3726,15 @@ WOOD
   vertical-align: top;
 }
 
-#jamrtpxkid .gt_row_group_first td {
+#mholwiajdv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jamrtpxkid .gt_row_group_first th {
+#mholwiajdv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jamrtpxkid .gt_summary_row {
+#mholwiajdv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3744,16 +3744,16 @@ WOOD
   padding-right: 5px;
 }
 
-#jamrtpxkid .gt_first_summary_row {
+#mholwiajdv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_first_summary_row.thick {
+#mholwiajdv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jamrtpxkid .gt_last_summary_row {
+#mholwiajdv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3763,7 +3763,7 @@ WOOD
   border-bottom-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_grand_summary_row {
+#mholwiajdv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3773,7 +3773,7 @@ WOOD
   padding-right: 5px;
 }
 
-#jamrtpxkid .gt_first_grand_summary_row {
+#mholwiajdv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3783,7 +3783,7 @@ WOOD
   border-top-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_last_grand_summary_row_top {
+#mholwiajdv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3793,11 +3793,11 @@ WOOD
   border-bottom-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_striped {
+#mholwiajdv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jamrtpxkid .gt_table_body {
+#mholwiajdv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3806,7 +3806,7 @@ WOOD
   border-bottom-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_footnotes {
+#mholwiajdv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3820,7 +3820,7 @@ WOOD
   border-right-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_footnote {
+#mholwiajdv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3829,7 +3829,7 @@ WOOD
   padding-right: 5px;
 }
 
-#jamrtpxkid .gt_sourcenotes {
+#mholwiajdv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3843,7 +3843,7 @@ WOOD
   border-right-color: #D3D3D3;
 }
 
-#jamrtpxkid .gt_sourcenote {
+#mholwiajdv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3851,72 +3851,72 @@ WOOD
   padding-right: 5px;
 }
 
-#jamrtpxkid .gt_left {
+#mholwiajdv .gt_left {
   text-align: left;
 }
 
-#jamrtpxkid .gt_center {
+#mholwiajdv .gt_center {
   text-align: center;
 }
 
-#jamrtpxkid .gt_right {
+#mholwiajdv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jamrtpxkid .gt_font_normal {
+#mholwiajdv .gt_font_normal {
   font-weight: normal;
 }
 
-#jamrtpxkid .gt_font_bold {
+#mholwiajdv .gt_font_bold {
   font-weight: bold;
 }
 
-#jamrtpxkid .gt_font_italic {
+#mholwiajdv .gt_font_italic {
   font-style: italic;
 }
 
-#jamrtpxkid .gt_super {
+#mholwiajdv .gt_super {
   font-size: 65%;
 }
 
-#jamrtpxkid .gt_footnote_marks {
+#mholwiajdv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jamrtpxkid .gt_asterisk {
+#mholwiajdv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jamrtpxkid .gt_indent_1 {
+#mholwiajdv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jamrtpxkid .gt_indent_2 {
+#mholwiajdv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jamrtpxkid .gt_indent_3 {
+#mholwiajdv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jamrtpxkid .gt_indent_4 {
+#mholwiajdv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jamrtpxkid .gt_indent_5 {
+#mholwiajdv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jamrtpxkid .katex-display {
+#mholwiajdv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jamrtpxkid div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mholwiajdv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3950,10 +3950,10 @@ WOOD
 </table>
 </div>
 </div>
-<p>Based on the linear regression results, there is empirical support for the hypothesis that higher educational attainment is a significant predictor of Democratic vote share among Wisconsin counties. The <strong>coefficient estimate of 0.66</strong> for “Education Rate (%)” indicates that for every 1% increase in the proportion of adults with a bachelor’s degree or higher, the vote share for Kamala Harris is predicted to increase by roughly <strong>0.66 percentage points.</strong> The <strong>23.88 intercept value</strong> suggests that Harris would have a baseline support of 23.88% in a hypothetical county with no Bachelor’s degree attainment.</p>
+<p>Based on the linear regression results, there is empirical support for the hypothesis that higher educational attainment is a significant predictor of Democratic vote share among Wisconsin counties. As shown in the table above, the <strong>coefficient estimate of 0.66</strong> for “Education Rate (%)” indicates that for every 1% increase in the proportion of adults with a bachelor’s degree or higher, the vote share for Kamala Harris is predicted to increase by roughly <strong>0.66 percentage points.</strong> <strong>The standard error of 0.13</strong> associated with the coefficient suggests that this estimate is precise because the coefficient is more than five times larger than the error. The <strong>23.88 intercept value</strong> suggests that Harris would have a baseline support of 23.88% in a hypothetical county with no Bachelor’s degree attainment.</p>
 <h3 id="statistical-inference">Statistical Inference</h3>
 <h4 id="permutation-test-and-p-value">Permutation Test and P-value</h4>
-<p>To determine if the relationship between education and voting behavior is statistically significant, a permutation test was conducted with 1,000 repetitions. The resulting null distribution of the slope represents what the relationship would look like if there was a real connection between education and Democratic vote share. The red vertical line represents the observed slope from the real Wisconsin county-level data.</p>
+<p>To determine if the observed relationship is statistically significant, a permutation test was conducted with 1,000 repetitions. The resulting null distribution represents the range of possible slopes if there were no real connection between education and vote share. The red vertical line represents the observed slope (0.66) from the actual data.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-13-1.png" alt="" width="624" /></p>
 <table>
@@ -3970,17 +3970,18 @@ WOOD
 </tbody>
 </table>
 </div>
-<p>The observed slope falls completely outside the null distribution and the resulting p-value is 0. Because the p-value is well below the standard threshold of 0.05, <strong>the null hypothesis can be rejected</strong> with a high degree of certainty. This provides strong evidence that the relationship between educational attainment and Democratic vote share in Wisconsin is not a product of random chance.</p>
+<p>The observed slope falls completely outside the null distribution, and the resulting p-value is &lt; 0.001. Because the p-value is well below the standard threshold of 0.05, <strong>the null hypothesis can be rejected</strong> with a high degree of certainty. This provides strong evidence that the relationship between educational attainment and Democratic vote share in Wisconsin is not the product of random chance.</p>
 <h4 id="bootstrap-confidence-interval">Bootstrap Confidence Interval</h4>
 <p>To assess the precision of the relationship between education and voting behavior, a bootstrap distribution of the slope was generated using 1,000 resamples. The following distribution shows the range of possible slope coefficients one could expect to see. The <strong>95% percent confidence interval</strong> (the blue dashed line) ranges from approximately 0.35 to 0.98.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-15-1.png" alt="" width="624" /></p>
 </div>
-<p>The bootstrap distribution of the slope coefficient is centered around approximately 0.66. Because the 95% confidence interval lies entirely above zero, it can be concluded that <strong>the relationship between educational attainment and Democratic vote share is statistically significant.</strong> This suggests that a one-percentage point increase in the share of individuals over 25 with a bachelor’s degree is associated with an increase of approximately 0.66 percentage points in vote share for Kamala Harris, as the true effect likely falls within the estimated confidence interval.</p>
-<p>However, because this research utilizes cross-sectional observational data rather than an experimental design, <strong>the relationship should be interpreted as a correlation rather than a causal effect.</strong> This is because counties were not randomly assigned different levels of educational attainment, and other factors, such income and population density, may influence education levels and voting behavior. This makes it difficult to isolate the independent effect of education on Democratic vote share.</p>
+<p>The bootstrap distribution of the slope coefficient is centered around approximately 0.66. Consistent with the <strong>Central Limit Theorem</strong>, the distribution of the resampled estimates follows an approximately normal, bell-shaped curve. This allows for a reliable calculation of the confidence intervals. Because the 95% confidence interval lies entirely above zero, it can be concluded that <strong>the relationship between educational attainment and Democratic vote share is statistically significant.</strong> This suggests that a one-percentage point increase in the share of individuals over 25 with a bachelor’s degree is associated with an increase of approximately 0.66 percentage points in vote share for Kamala Harris, as the true effect likely falls within the estimated confidence interval.</p>
+<p>While these results provide strong evidence in support of an association between educational attainment and Democratic vote share, <strong>the relationship should be interpreted as a correlation rather than a causal effect.</strong> Because this study utilizes cross-sectional observational data, counties were not randomly assigned educational levels. Confounding variables such as median household income and population density likely influence both educational attainment and partisan preference. Therefore, even though education is a strong predictor of Harris’s 2024 vote share in Wisconsin, it cannot be concluded that increasing education rates would directly cause an increase in Democratic support. To determine a true causal effect, one must further control for these underlying factors.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p><strong>This analysis provides strong empirical support for the hypothesis that educational attainment is a significant predictor of Democratic support in Wisconsin’s 2024 presidential election.</strong> Both the permutation test (p &lt; 0.05) and the bootstrap 95% confidence interval (0.35, 0.98) confirm a positive association. This indicates that as each county’s bachelor’s degree attainment increases, so does the Democratic vote share. However, it is important to note that these results are subject to limitations and threats to interference. First, because this design is cross-sectional, it is vulnerable to omitted variable bias, where factors such as median household income, racial demographics, or population density can confound the relationship between education and voting behavior. Additionally, because this analysis relies on aggregate county-level data, it can be observed that highly educated counties lean Democratic, but it cannot technically be proven that individual degree-holders within those counties were the ones who cast votes for Kamala Harris. To improve this research, future studies should conduct individual-level surveys or exit polls to isolate education as a variable from other socioeconomic factors, thereby avoiding group-level assumptions. This data would also benefit from longitudinal data that observes multiple election cycles to understand how the effect of education on Democratic vote share has evolved over time in Wisconsin.</p>
+<p><strong>This analysis provides strong empirical support for the hypothesis that educational attainment is a significant predictor of Democratic support in Wisconsin’s 2024 presidential election.</strong> Both the permutation test (p &lt; 0.05) and the bootstrap 95% confidence interval (0.35, 0.98) confirm a positive association. This indicates that as each county’s bachelor’s degree attainment increases, so does the Democratic vote share. However, it is important to note that these results are subject to limitations and threats to interference. First, because this design is cross-sectional, it is vulnerable to omitted variable bias, where factors such as median household income, racial demographics, or population density can confound the relationship between education and voting behavior. Additionally, because this analysis relies on aggregate county-level data, it can be observed that highly educated counties lean Democratic, but it cannot technically be proven that individual degree-holders within those counties were the ones who cast votes for Kamala Harris. To improve this research, future studies should incorporate individual-level data, such as exit polls or voter surveys, to isolate the effect of education from other socioeconomic factors, thereby avoiding group-level assumptions. This data would also benefit from longitudinal data that observes multiple election cycles to understand how the effect of education on Democratic vote share has evolved over time in Wisconsin. These improvements would move the study past simple correlations and help pinpoint what actually motivates Wisconsin voters.</p>
 <h2 id="ai-disclosure-statement">AI Disclosure Statement</h2>
+<p>I used an AI tool (Google Gemini) exclusively to assist with the formatting and styling of the data presentation. Specifically, AI was used to help learn the code for the kableExtra package to create the scrollable data table and to refine the modelsummary code to ensure the regression table fit nicely into the website’s layout.</p>
 <h2 id="code-printout">Code Printout</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -4152,6 +4153,15 @@ WOOD
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
